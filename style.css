@@ -1,0 +1,494 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap");
+
+:root {
+  --clr-neutral-100: #ffffff;
+  --clr-neutral-700: hsla(0, 0%, 30%, 1);
+  --clr-neutral-800: #000000;
+  --clr-primary-200: #00ff79;
+  --clr-primary-400: #036632;
+
+  --ff-base: "Montserrat", sans-serif;
+
+  --fw-regular: 400;
+  --fw-semibold: 700;
+  --fw-bold: 900;
+
+  --fs-200: 0.875rem;
+  --fs-400: 1.25rem;
+  --fs-450: 1.5rem;
+  --fs-500: 1.625rem;
+  --fs-600: 2rem;
+  --fs-700: 3rem;
+  --fs-800: 4rem;
+
+  --side-padding: 5.5rem;
+}
+
+* :is(::before, ::after) {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+body {
+  line-height: 1.5;
+  min-height: 100%;
+
+  font-family: var(--ff-base);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-400);
+  color: var(--clr-neutral-700);
+}
+
+
+h1, h2, h3, h4,
+button, input, label {
+  line-height: 1.1;
+}
+
+/* h1, h2, h3, h4 {
+  text-wrap: balance;
+} */
+
+img {
+  width: 100%;
+  display: block;
+}
+
+.container {
+  --_max-width: 1272px;
+  --_padding: 1rem;
+
+  width: min(var(--_max-width), 100% - (var(--_padding) * 2));
+  margin-inline: auto;
+}
+
+.flow > * + * {
+  margin-top: 1.2em;
+}
+
+.even-columns {
+  display: grid;
+  grid-auto-columns: 1fr;
+  gap: 1em;
+  align-items: center;
+}
+
+@media screen and (min-width: 65em) {
+  .even-columns {
+    grid-auto-flow: column;
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.gap-2 {
+  gap: 2rem;
+}
+
+.gap-3 {
+  gap: 3rem;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.relative {
+  position: relative;
+}
+
+.btn {
+  padding: .7em 1.5em;
+
+  background-color: var(--clr-primary-400);
+  color: var(--clr-neutral-100);
+
+  font-size: var(--fs-400);
+  font-weight: var(--fw-semibold);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo span {
+  font-size: var(--fs-450);
+  font-weight: var(--fw-semibold);
+  color: var(--clr-primary-400);
+}
+
+.header-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: .5rem;
+}
+
+.navigation {   
+    display: flex;
+    gap: 2.5rem;
+}
+
+.navigation > li > a {
+  text-decoration: none;
+  color: var(--clr-primary-400);
+  font-size: var(--fs-400);
+}
+
+.icons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.mobile-nav-toggle {
+  display: none;
+}
+
+@media screen and (max-width: 65em) {
+  .navigation {
+    display: none;
+  }
+
+  .navigation > li > a {
+    font-size: var(--fs-400);
+    font-weight: var(--fw-semibold);
+    color: var(--clr-primary-200);
+  }
+
+  .navigation[data-visible] {
+    display: grid;
+    position: fixed;
+    inset: 0 0 0 50%;
+
+    background-color: hsla(0, 0%, 50%, 1);
+    z-index: 1;
+
+    padding: min(30vh, 10rem) 2em;
+    gap: 1rem;
+  }
+
+  @supports (backdrop-filter: blur(.4rem)) {
+    .navigation[data-visible] {
+    background-color: hsla(0, 0%,20%, .6);
+      backdrop-filter: blur(0.3rem);
+    }
+  }
+
+  .icons {
+    display: none;
+  }
+
+  .mobile-nav-toggle {
+    display: block;
+    background: transparent;
+    border: 0;
+    z-index: 1;
+  }
+
+  .mobile-nav-toggle svg {
+    fill: var(--clr-primary-400);
+  }
+}
+
+.main-hero {
+  background: url(./image/hero.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-block: min(25vh, 7rem);
+}
+
+.hero-content h1 {
+  font-size: var(--fs-700);
+  font-weight: var(--fw-semibold);
+
+  color: var(--clr-neutral-100);
+
+  max-width: 33rem;
+}
+
+.hero-content > h1 > span {
+  color: var(--clr-primary-200);
+}
+
+.hero-content > p {
+  max-width: 47ch;
+  color: var(--clr-neutral-100);
+}
+
+.qualities {
+  margin-top: -2rem;
+}
+
+.qualities-card {
+  background-color: #fff;
+  box-shadow: 24px -10px 76px 24px rgba(3, 102, 50, 0.10);
+  border-bottom: 1rem solid var(--clr-primary-200);
+  padding-inline: 1rem;
+  font-size: var(--fs-200);
+  height: 100%;
+  position: relative;
+  display: grid;
+  gap: 1rem;
+}
+
+.qualities-card > div {
+  margin-block: 2rem 1rem;
+}
+
+.qualities-card > p {
+  margin-bottom: 2rem;
+}
+
+.qualities-card > h2 {
+  font-weight: var(--fw-semibold);
+  color: var(--clr-neutral-800);
+}
+
+.about {
+  padding-block: min(25vh, 7rem);
+}
+
+.about__text {
+  max-width:42.9ch;
+}
+
+.about__text h2,
+.services__content h2,
+.who-we-are h2,
+.team h2 {
+  color: var(--clr-primary-400);
+  font-size: var(--fs-700);
+  font-weight: var(--fw-semibold);
+}
+
+.about__text > p:first-of-type,
+.services__content > p:first-of-type
+{
+  color: var(--clr-neutral-800);
+  font-size: var(--fs-500);
+  font-weight: var(--fw-semibold);
+}
+
+.about .attributes {
+  align-items: center;
+  justify-content: space-between;
+}
+
+.about .attributes p:first-child {
+  --clr-faded-black: hsla(0, 0%, 30%, 1);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-450);
+}
+
+.about img {
+  display: none;
+}
+
+@media screen and (min-width: 65em) {
+  .about img {
+    display: block;
+    border-radius: 3.2rem 0;
+
+    box-shadow: 60px 60px 0px -30px var(--clr-primary-400);
+  }
+}
+
+.services__container{
+  padding-block: min(25vh, 7rem);
+  background-color: hsla(148, 95%, 20%, 0.05);
+}
+
+.services__content {
+  align-self: start;
+  max-width: 35ch;
+}
+
+.services__content p:first-of-type {
+  max-width: 13ch;
+  line-height: 1.1;
+}
+
+.services__content button{
+  padding: 1.2em 3.2em;
+}
+
+.services__cards {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: 1fr 1fr;
+}
+
+.services__card {
+  background-color: var(--clr-neutral-100);
+  padding: 2rem;
+  max-width: 50rem;
+}
+
+.services__card h3{
+  color: var(--clr-neutral-800);
+  font-weight: var(--fw-semibold);
+}
+
+.services__card p {
+  font-size: var(--fs-200);
+}
+
+.who-we-are {
+  padding-block: min(25vh, 10rem);
+  align-items: center;
+}
+
+.who-we-are div:has(img) {
+  height: 110%;
+}
+
+.who-we-are > div{
+  align-self: start;
+}
+
+.who-we-are img {
+  height: 100%;
+  object-fit: cover;
+  border-radius: 3.2rem 0 3.2rem 0;
+  box-shadow: -60px -60px 0px -30px var(--clr-primary-400);
+}
+
+.sub-text {
+  width: 31ch;
+}
+
+.sub-head {
+  color: var(--clr-neutral-800);
+  font-size: var(--fs-500);
+  font-weight: var(--fw-semibold);
+  width: 20ch;
+}
+
+.stats {
+  font-weight: var(--fw-semibold);
+}
+
+.stats p {
+  position: relative;
+  width: 100%;
+}
+
+.stats p::before {
+  content: '';
+  width: 100%;
+  height: 1.25rem;
+  position: absolute;
+  bottom: -1.2rem;
+  border-left: 20px solid var(--clr-primary-400);
+  background-color: color-mix(in oklab, var(--clr-neutral-700) 15% , white);
+}
+
+.team {
+  text-align: center;
+}
+
+.swiper {
+  width: 95%;
+  margin-inline: auto;
+
+}
+
+.team-cards {
+  padding-bottom: 6rem !important;
+}
+
+.team-card {
+  width: 22rem;
+  aspect-ratio: 1;
+  box-shadow: 38px 7px 85px 0px rgba(3, 102, 50, 0.10);
+  border-radius: 4.0625rem 0rem 0rem 0rem;
+  overflow: hidden;
+}
+
+.team-profile-des {
+  padding-block: 1.5rem 2rem;
+}
+
+.team-card p {
+  color: var(--clr-neutral-800);
+}
+
+.team-card p:first-of-type {
+  font-size: var(--fs-450);
+  font-weight: var(--fw-semibold);
+}
+
+.swiper-custom-nav {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 2.5rem;
+  padding-inline: .5rem;
+  color: var(--clr-primary-200);
+}
+
+.nav-left {
+  background-color: var(--clr-primary-400);
+  padding: .5rem;
+  border-radius: 50%;
+}
+
+.nav-right {
+  background-color: var(--clr-primary-400);
+  padding: .5rem;
+  border-radius: 50%;
+}
+
+.footer {
+  background-color: var(--clr-primary-400);
+  color: var(--clr-neutral-100);
+  padding-block: min(10vh, 3rem);
+}
+
+.footer .logo > svg {
+  fill: var(--clr-neutral-100);
+}
+
+.footer .logo > span {
+  color: var(--clr-neutral-100);
+}
+
+.footer li > a {
+  color: var(--clr-neutral-100) !important;
+  font-size: 1rem;
+}
+
+.footer p {
+  font-size: var(--fs-200);
+  max-width: 36ch;
+}
+
+.footer .navigation {
+  justify-content: end;
+}
+
+.footer .icons {
+  justify-content: end;
+}
